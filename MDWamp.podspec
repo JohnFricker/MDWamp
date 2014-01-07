@@ -8,12 +8,12 @@ Pod::Spec.new do |s|
     'Niko Usai' => 'mogui83@gmail.com'
   }
   s.source = {
-    :git => 'https://github.com/mogui/MDWamp.git',
-    :tag => '1.0.1'
+    :git => 'https://github.com/johnfricker/MDWamp.git',
+    :brach => 'podrocket'
   }
   s.source_files        = 'MDWamp/MDWamp/**/*.{h,m,c}'
   s.ios.deployment_target = '5.0'
   s.osx.frameworks      = %w{CFNetwork Security}
   s.libraries           = "icucore"
-  s.dependency		= 'SocketRocket'
+  s.dependency		= "SocketRocket"
 end
