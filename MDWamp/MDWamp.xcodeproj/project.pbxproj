@@ -19,6 +19,7 @@
 		8391DC1517E6610B0023BBB1 /* MDRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8391DC1317E6610B0023BBB1 /* MDRPCResponse.m */; };
 		C7A1CEE816FB035C00036722 /* MDCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = C7A1CEE616FB035C00036722 /* MDCrypto.h */; };
 		C7A1CEE916FB035C00036722 /* MDCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A1CEE716FB035C00036722 /* MDCrypto.m */; };
+		FC2E0922187C8ECB0037BD74 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2E0921187C8ECB0037BD74 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		8391DC1317E6610B0023BBB1 /* MDRPCResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRPCResponse.m; sourceTree = "<group>"; };
 		C7A1CEE616FB035C00036722 /* MDCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCrypto.h; path = Crypto/MDCrypto.h; sourceTree = "<group>"; };
 		C7A1CEE716FB035C00036722 /* MDCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCrypto.m; path = Crypto/MDCrypto.m; sourceTree = "<group>"; };
+		FC2E0921187C8ECB0037BD74 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2E0922187C8ECB0037BD74 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +57,7 @@
 		33DE06E21609C5B00044BB6B = {
 			isa = PBXGroup;
 			children = (
+				FC2E0920187C89E10037BD74 /* Frameworks */,
 				33DE06F31609C5B00044BB6B /* MDWamp */,
 				33DE06F21609C5B00044BB6B /* Products */,
 			);
@@ -103,6 +107,14 @@
 				C7A1CEE716FB035C00036722 /* MDCrypto.m */,
 			);
 			name = Crypto;
+			sourceTree = "<group>";
+		};
+		FC2E0920187C89E10037BD74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E0921187C8ECB0037BD74 /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,10 +318,6 @@
 		33DE06FD1609C5B00044BB6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
 				DEAD_CODE_STRIPPING = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -317,11 +325,23 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDWamp/MDWamp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/SocketRocket\"",
+				);
 				INFOPLIST_FILE = "MDWamp/MDWamp-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
+				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
@@ -332,10 +352,6 @@
 		33DE06FE1609C5B00044BB6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
 				DEAD_CODE_STRIPPING = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -343,11 +359,23 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDWamp/MDWamp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"COCOAPODS=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/SocketRocket\"",
+				);
 				INFOPLIST_FILE = "MDWamp/MDWamp-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
+				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
