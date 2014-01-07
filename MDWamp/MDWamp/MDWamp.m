@@ -21,9 +21,9 @@
 
 #import "MDWamp.h"
 #import "MDJSONBridge.h"
-#import "SRWebSocket.h"
 #import "MDCrypto.h"
 #import "MDRPCResponse.h"
+#import <SRWebSocket.h>
 
 @interface MDWamp () <SRWebSocketDelegate, NSURLConnectionDelegate>
 @end
