@@ -1,7 +1,16 @@
 .DS_Store
-MDWamp/build
-MDWampTest/build
-MDWamp/MDWamp.xcodeproj/project.xcworkspace/xcuserdata/*
-MDWamp/MDWamp.xcodeproj/xcuserdata/*
-MDWampTest/MDWampTest.xcodeproj/project.xcworkspace/xcuserdata/*
-MDWampTest/MDWampTest.xcodeproj/xcuserdata/*
+build/*
+*.pbxuser
+*.mode2v3
+*.mode1v3
+*.perspective
+*.perspectivev3
+*~.nib
+
+.lock
+.swp
+.out
+
+#ignore private workspace stuff added by Xcode4
+xcuserdata
+project.xcworkspace
