@@ -10,9 +10,6 @@
 		33B2BDFA160A1B5C00DAF4CB /* MDWampProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 33DE07131609C60B0044BB6B /* MDWampProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33B2BE04160A1FC600DAF4CB /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 33B2BE03160A1FC600DAF4CB /* JSONKit.h */; };
 		33DE06F81609C5B00044BB6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33DE06F61609C5B00044BB6B /* InfoPlist.strings */; };
-		33DE07081609C5F70044BB6B /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 33DE07011609C5F70044BB6B /* base64.c */; };
-		33DE070B1609C5F70044BB6B /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DE07041609C5F70044BB6B /* NSData+SRB64Additions.m */; };
-		33DE070E1609C5F70044BB6B /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DE07071609C5F70044BB6B /* SRWebSocket.m */; };
 		33DE07141609C60B0044BB6B /* MDWamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 33DE070F1609C60B0044BB6B /* MDWamp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33DE07151609C60B0044BB6B /* MDWamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DE07101609C60B0044BB6B /* MDWamp.m */; };
 		33DE07171609C60B0044BB6B /* MDWampMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DE07121609C60B0044BB6B /* MDWampMessage.m */; };
@@ -30,13 +27,6 @@
 		33DE06F51609C5B00044BB6B /* MDWamp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MDWamp-Info.plist"; sourceTree = "<group>"; };
 		33DE06F71609C5B00044BB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		33DE06F91609C5B00044BB6B /* MDWamp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MDWamp-Prefix.pch"; sourceTree = "<group>"; };
-		33DE07011609C5F70044BB6B /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
-		33DE07021609C5F70044BB6B /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		33DE07031609C5F70044BB6B /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
-		33DE07041609C5F70044BB6B /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
-		33DE07051609C5F70044BB6B /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
-		33DE07061609C5F70044BB6B /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		33DE07071609C5F70044BB6B /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		33DE070F1609C60B0044BB6B /* MDWamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWamp.h; sourceTree = "<group>"; };
 		33DE07101609C60B0044BB6B /* MDWamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWamp.m; sourceTree = "<group>"; };
 		33DE07111609C60B0044BB6B /* MDWampMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWampMessage.h; sourceTree = "<group>"; };
@@ -81,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				33B2BE03160A1FC600DAF4CB /* JSONKit.h */,
-				33DE07001609C5F70044BB6B /* SocketRocket */,
 				C7A1CEEA16FB036100036722 /* Crypto */,
 				33DE070F1609C60B0044BB6B /* MDWamp.h */,
 				33DE07101609C60B0044BB6B /* MDWamp.m */,
@@ -105,20 +94,6 @@
 				33DE06F91609C5B00044BB6B /* MDWamp-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		33DE07001609C5F70044BB6B /* SocketRocket */ = {
-			isa = PBXGroup;
-			children = (
-				33DE07011609C5F70044BB6B /* base64.c */,
-				33DE07021609C5F70044BB6B /* base64.h */,
-				33DE07031609C5F70044BB6B /* NSData+SRB64Additions.h */,
-				33DE07041609C5F70044BB6B /* NSData+SRB64Additions.m */,
-				33DE07051609C5F70044BB6B /* SocketRocket-Prefix.pch */,
-				33DE07061609C5F70044BB6B /* SRWebSocket.h */,
-				33DE07071609C5F70044BB6B /* SRWebSocket.m */,
-			);
-			path = SocketRocket;
 			sourceTree = "<group>";
 		};
 		C7A1CEEA16FB036100036722 /* Crypto */ = {
@@ -254,9 +229,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33DE07081609C5F70044BB6B /* base64.c in Sources */,
-				33DE070B1609C5F70044BB6B /* NSData+SRB64Additions.m in Sources */,
-				33DE070E1609C5F70044BB6B /* SRWebSocket.m in Sources */,
 				33DE07151609C60B0044BB6B /* MDWamp.m in Sources */,
 				33DE07171609C60B0044BB6B /* MDWampMessage.m in Sources */,
 				33DE07251609C9350044BB6B /* MDJSONBridge.m in Sources */,
