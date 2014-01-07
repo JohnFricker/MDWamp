@@ -84,7 +84,7 @@
 		int serverProtocolVersion = [receivedMessage shiftStackAsInt];
 		if (serverProtocolVersion != kMDWampProtocolVersion) {
 			[socket close];
-			[_delegate onClose:0 reason:@"Protocol Version used by client and server don't match!"];
+			[_delegate wamp:self onClose:0 reason:@"Protocol Version used by client and server don't match!"];
 		}
 		serverIdent = [[NSString alloc] initWithString:[receivedMessage shiftStackAsString]];
 	} else if(receivedMessage.type == MDWampMessageTypeCallResult || receivedMessage.type == MDWampMessageTypeCallError){
@@ -103,7 +103,7 @@
             }
             else{
                 id<MDWampRpcDelegate>rpcDelegate = handler;
-                [rpcDelegate onResult:callResult forCalledUri:callUri];
+                [rpcDelegate wamp:self onResult:callResult forCalledUri:callUri];
             }
             [rpcDelegateMap removeObjectForKey:callID];
 		} else {
@@ -118,7 +118,7 @@
             }
             else{
                 id<MDWampRpcDelegate>rpcDelegate = [rpcDelegateMap objectForKey:callID];
-                [rpcDelegate onError:errorUri description:errorDetail forCalledUri:callUri];
+                [rpcDelegate wamp:self onError:errorUri description:errorDetail forCalledUri:callUri];
             }
             [rpcDelegateMap removeObjectForKey:callID];
 		}
@@ -133,7 +133,7 @@
 
 		if (subscribers != nil){
 			for (id<MDWampEventDelegate>subscriber in subscribers){
-				[subscriber onEvent:topicUri eventObject:eventPayload];
+				[subscriber wamp:self onEvent:topicUri eventObject:eventPayload];
 			}
 		}
 	}
@@ -144,15 +144,15 @@
 {
 	MDWampDebugLog(@"open");
 	autoreconnectRetries = 0;
-	if ([_delegate respondsToSelector:@selector(onOpen)]) {
-		[_delegate onOpen];
+	if ([_delegate respondsToSelector:@selector(wampDidOpen:)]) {
+		[_delegate wampDidOpen:self];
 	}
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
 	MDWampDebugLog(@"DID FAIL error %@", error);
-	if ([_delegate respondsToSelector:@selector(onClose:reason:)]) {
+	if ([_delegate respondsToSelector:@selector(wamp:onClose:reason:)]) {
 		[self webSocket:webSocket didCloseWithCode:error.code reason:error.localizedFailureReason wasClean:NO];
 	}
 }
@@ -171,8 +171,8 @@
 	}
 	
 	
-	if ([_delegate respondsToSelector:@selector(onClose:reason:)]) {
-		[_delegate onClose:code reason:reason];
+	if ([_delegate respondsToSelector:@selector(wamp:onClose:reason:)]) {
+		[_delegate wamp:self onClose:code reason:reason];
 	}
 }
 
@@ -185,12 +185,12 @@ static NSString *wampProcedureURL = @"http://api.wamp.ws/procedure";
 {
     [self call:[NSString stringWithFormat:@"%@#%@", wampProcedureURL, @"authreq"]
        success:^(NSString *callURI, id result) {
-           if ([_delegate respondsToSelector:@selector(onAuthReqWithAnswer:)]) {
-               [_delegate onAuthReqWithAnswer:result];
+           if ([_delegate respondsToSelector:@selector(wamp:onAuthReqWithAnswer:)]) {
+               [_delegate wamp:self onAuthReqWithAnswer:result];
            }
        } error:^(NSString *callURI, NSString *errorURI, NSString *errorDescription) {
-           if ([_delegate respondsToSelector:@selector(onAuthFailForCall:)]) {
-               [_delegate onAuthFailForCall:@"authreq" withError:errorDescription];
+           if ([_delegate respondsToSelector:@selector(wamp:onAuthFailForCall:)]) {
+               [_delegate wamp:self onAuthFailForCall:@"authreq" withError:errorDescription];
            }
        } args:appKey,extra,nil
      ];
@@ -199,8 +199,8 @@ static NSString *wampProcedureURL = @"http://api.wamp.ws/procedure";
 - (void) authSignChallenge:(NSString *)challenge withSecret:(NSString *)secret
 {
     NSString *signature = [MDCrypto hmacSHA256Data:challenge withKey:secret];
-    if ([_delegate respondsToSelector:@selector(onAuthSignWithSignature:)]) {
-		[_delegate onAuthSignWithSignature:signature];
+    if ([_delegate respondsToSelector:@selector(wamp:onAuthSignWithSignature:)]) {
+		[_delegate wamp:self onAuthSignWithSignature:signature];
 	}
 }
 
@@ -208,12 +208,12 @@ static NSString *wampProcedureURL = @"http://api.wamp.ws/procedure";
 {
     [self call:[NSString stringWithFormat:@"%@#%@", wampProcedureURL, @"auth"]
        success:^(NSString *callURI, id result) {
-            if ([_delegate respondsToSelector:@selector(onAuthWithAnswer:)]) {
-                [_delegate onAuthWithAnswer:result];
+            if ([_delegate respondsToSelector:@selector(wamp:onAuthWithAnswer:)]) {
+                [_delegate wamp:self onAuthWithAnswer:result];
             }
        } error:^(NSString *callURI, NSString *errorURI, NSString *errorDescription) {
-           if ([_delegate respondsToSelector:@selector(onAuthFailForCall:)]) {
-               [_delegate onAuthFailForCall:@"auth" withError:errorDescription];
+           if ([_delegate respondsToSelector:@selector(wamp:onAuthFailForCall:)]) {
+               [_delegate wamp:self onAuthFailForCall:@"auth" withError:errorDescription];
            }
        } args:signature,nil
      ];

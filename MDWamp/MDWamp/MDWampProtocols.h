@@ -25,6 +25,7 @@
  * Main MDWamp delegate it manages connection and disconnection of the cliet
  */
 
+@class MDWamp;
 
 @protocol MDWampDelegate <NSObject>
 @optional
@@ -32,8 +33,8 @@
 /*
  * Called when client connect to the server
  */
-- (void) onOpen;
-
+- (void)wampDidOpen:(MDWamp *)client
+;
 /*
  * Called when client disconnect from the server
  * it gives code of the error / reason of disconnect and a description of the reason
@@ -41,28 +42,28 @@
  * @param code			error/reason code
  * @param reason		dicsconnection reason
  */
-- (void) onClose:(int)code reason:(NSString *)reason;
+- (void)wamp:(MDWamp *)client onClose:(int)code reason:(NSString *)reason;
 
 /*
  * Auth req finished
  *
  * @param answer		authreq answer
  */
-- (void) onAuthReqWithAnswer:(NSString *)answer;
+- (void)wamp:(MDWamp *)client onAuthReqWithAnswer:(NSString *)answer;
 
 /*
  * Signed authentification challenge
  *
  * @param signature		HmacSHA256(challenge, secret)
  */
-- (void) onAuthSignWithSignature:(NSString *)signature;
+- (void)wamp:(MDWamp *)client onAuthSignWithSignature:(NSString *)signature;
 
 /*
  * Handshake finished
  *
  * @param answer		auth call answer
  */
-- (void) onAuthWithAnswer:(NSString *)answer;
+- (void)wamp:(MDWamp *)client onAuthWithAnswer:(NSString *)answer;
 
 /*
  * Auth failed
@@ -70,7 +71,7 @@
  * @param procCall		auth procedure that failed: authreq or auth
  * @param error         the error returned by the failed call
  */
-- (void) onAuthFailForCall:(NSString *)procCall withError:(NSString *)errorDetails;
+- (void)wamp:(MDWamp *)client onAuthFailForCall:(NSString *)procCall withError:(NSString *)errorDetails;
 
 @end
 
@@ -87,7 +88,7 @@
  * @param topicUri		the URI of the topic from which the event arrives
  * @param object		payload of the event
  */
-- (void) onEvent:(NSString *)topicUri eventObject:(id)object;
+- (void)wamp:(MDWamp *)client onEvent:(NSString *)topicUri eventObject:(id)object;
 
 @end
 
@@ -104,7 +105,7 @@
  * @param result		object representing the result of the call
  * @param callUri		remote procedure uri called
  */
-- (void) onResult:(id)result forCalledUri:(NSString*)callUri;
+- (void)wamp:(MDWamp *)client onResult:(id)result forCalledUri:(NSString*)callUri;
 
 /*
  * Called when the remote procedure fails
@@ -113,7 +114,7 @@
  * @param errorDesc		Description of the error
  * @param callUri		remote procedure uri called
  */
-- (void) onError:(NSString *)errorUri description:(NSString*)errorDesc forCalledUri:(NSString*)callUri;
+- (void)wamp:(MDWamp *)client onError:(NSString *)errorUri description:(NSString*)errorDesc forCalledUri:(NSString*)callUri;
 
 @end
 
