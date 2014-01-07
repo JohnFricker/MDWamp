@@ -14,5 +14,6 @@ Pod::Spec.new do |s|
   s.source_files        = 'MDWamp/MDWamp/**/*.{h,m,c}'
   s.ios.deployment_target = '5.0'
   s.osx.frameworks      = %w{CFNetwork Security}
+  s.osx.deployment_target = '10.8'
   s.libraries           = "icucore"
 end
