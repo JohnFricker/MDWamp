@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   }
   s.source = {
     :git => 'https://github.com/johnfricker/MDWamp.git',
-    :brach => 'podrocket'
+    :branch => 'podrocket'
   }
   s.source_files        = 'MDWamp/MDWamp/**/*.{h,m,c}'
   s.ios.deployment_target = '5.0'
